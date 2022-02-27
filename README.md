@@ -99,7 +99,7 @@ Alternatively, if `ShowPicker` is disabled or `Timeout` set to 0, keep pressing 
 * Embedded Intel WLAN module works with [OpenIntelWireless](https://github.com/OpenIntelWireless/itlwm/releases);
 * Embedded Intel BTLE module detected with [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases);
 * CPU fan readings work with `ec-device` as `Intel_EC_V9` with [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases);
-* Integrated Genesys Logic *GL9755* SD card reader [[17a0:9755]](http://pci-ids.ucw.cz/read/PC/17a0/9755) now _seems_ compatible out-of-the-box;
+* Integrated Genesys Logic **GL9755** SD card reader [[17a0:9755]](http://pci-ids.ucw.cz/read/PC/17a0/9755) now _seems_ compatible out-of-the-box;
 * Power Management is present and active as `X86PlatformPlugin` is attached to `PR00` in IORegistry;
 * Sleep/Wake both work without issues; see "Power" section in [Hackintool](https://github.com/headkaze/Hackintool/releases);
 * Both NVMe and SSD SATA interfaces work with no effort nor kext needed.

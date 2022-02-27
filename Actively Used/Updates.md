@@ -9,7 +9,7 @@ A direct jump to this version, where some personal tweaks were added besides cha
 * UEFI → AppleInput → added new key: `PointerPollMask` default value to "-1" integer
 * UEFI → AppleInput → added new key: `PointerPollMin` default value to "10" integer
 * UEFI → AppleInput → added new key: `PointerPollMax` default value to "80" integer
-* UEFI → Audio → renamed key: from `AudioOut` to `AudioOutMask` with default value to "1" integer
+* UEFI → Audio → renamed key from `AudioOut` to `AudioOutMask` with default value to "1" integer
 * UEFI → Audio → added new key: `DisconnectHda` as "false" boolean
 * UEFI → Audio → added new key: `MaximumGain` default value to "-15" integer
 * UEFI → Audio → added new key: `MinimumAssistGain` default value to "-30" integer
@@ -21,7 +21,7 @@ A direct jump to this version, where some personal tweaks were added besides cha
 **Personal changes:**
 
 * ACPI → Patch → changed method replacing `_STA` with `XSTA` for Device (H_EC) with improved byte matching
-* DeviceProperties → `PciRoot(0x0)/Pci(0x2,0x0)` → removed `igfxfw` as it doesn't serve any purpose
+* DeviceProperties → `PciRoot(0x0)/Pci(0x2,0x0)` → removed `igfxfw` key as it doesn't serve any purpose
 * DeviceProperties → `PciRoot(0x0)/Pci(0x17,0x0)` → added SATA model string for visual reference only
 * DeviceProperties → `PciRoot(0x0)/Pci(0x1d,0x0)/Pci(0x0,0x0)` → added NVMe model string for visual reference only
 * DeviceProperties → `PciRoot(0x0)/Pci(0x1f,0x3)` → converted type for key `layout-id` to integer
