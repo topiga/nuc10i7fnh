@@ -2,6 +2,32 @@
 
 The following changes (either additions or removals) are present in each configuration file per their respective OpenCore release:
 
+## OpenCore v0.7.8 Update
+
+A direct jump to this version, where some personal tweaks were added besides changes in OpenCore configuration keys:
+
+* UEFI → AppleInput → added new key: `PointerPollMask` default value to "-1" integer
+* UEFI → AppleInput → added new key: `PointerPollMin` default value to "10" integer
+* UEFI → AppleInput → added new key: `PointerPollMax` default value to "80" integer
+* UEFI → Audio → renamed key: from `AudioOut` to `AudioOutMask` with default value to "1" integer
+* UEFI → Audio → added new key: `DisconnectHda` as "false" boolean
+* UEFI → Audio → added new key: `MaximumGain` default value to "-15" integer
+* UEFI → Audio → added new key: `MinimumAssistGain` default value to "-30" integer
+* UEFI → Audio → added new key: `MinimumAudibleGain` default value to "-55" integer
+* UEFI → Audio → removed obsolete key: `MinimumVolume`
+* UEFI → Audio → removed obsolete key: `VolumeAmplifier`
+* UEFI → Drivers → added new driver entry for `AudioDxe.efi` as "Disabled" string
+
+**Personal changes:**
+
+* ACPI → Patch → changed method replacing `_STA` with `XSTA` for Device (H_EC) with improved byte matching
+* DeviceProperties → `PciRoot(0x0)/Pci(0x2,0x0)` → removed `igfxfw` as it doesn't serve any purpose
+* DeviceProperties → `PciRoot(0x0)/Pci(0x17,0x0)` → added SATA model string for visual reference only
+* DeviceProperties → `PciRoot(0x0)/Pci(0x1d,0x0)/Pci(0x0,0x0)` → added NVMe model string for visual reference only
+* DeviceProperties → `PciRoot(0x0)/Pci(0x1f,0x3)` → converted type for key `layout-id` to integer
+* Misc → Security → changed value for key `ScanPolicy` to integer "17760515" to comply with documentation
+* NVRAM → Add → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → changed `boot-args` parameters string to include `igfxagdc=0`
+
 ## OpenCore v0.7.6 Update
 
 In this version, some minor aditions are reported, but none impacts this NUC hardware configuration:

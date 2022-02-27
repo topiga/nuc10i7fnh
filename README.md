@@ -99,7 +99,7 @@ Alternatively, if `ShowPicker` is disabled or `Timeout` set to 0, keep pressing 
 * Embedded Intel WLAN module works with [OpenIntelWireless](https://github.com/OpenIntelWireless/itlwm/releases);
 * Embedded Intel BTLE module detected with [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases);
 * CPU fan readings work with `ec-device` as `Intel_EC_V9` with [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases);
-* Integrated SDXC Card reader is **not** compatible; it is disabled in BIOS;
+* Integrated Genesys Logic *GL9755* SD card reader [[17a0:9755]](http://pci-ids.ucw.cz/read/PC/17a0/9755) now _seems_ compatible out-of-the-box;
 * Power Management is present and active as `X86PlatformPlugin` is attached to `PR00` in IORegistry;
 * Sleep/Wake both work without issues; see "Power" section in [Hackintool](https://github.com/headkaze/Hackintool/releases);
 * Both NVMe and SSD SATA interfaces work with no effort nor kext needed.
@@ -127,9 +127,9 @@ The `AAPL,ig-platform-id` property set to `0x3E9B0007` is used for **WhateverGre
 | Model Name             | Intel UHD Graphics 630               |
 | Camellia               | CamelliaDisabled (0)                 |
 | Connector Count        | 3                                    |
-| Pipe / Port #1         | Bus ID `0x05` Pipe `9`  Connector DP |
-| Pipe / Port #2         | Bus ID `0x04` Pipe `10` Connector DP |
-| Pipe / Port #3         | Bus ID `0x06` Pipe `8`  Connector DP |
+| Default Pipe / Port #1 | Bus ID `0x05` Pipe `9`  Connector DP |
+| Default Pipe / Port #2 | Bus ID `0x04` Pipe `10` Connector DP |
+| Default Pipe / Port #3 | Bus ID `0x06` Pipe `8`  Connector DP |
 | Patching Required      | No                                   |
 
 Read more at [Intel® HD Graphics FAQs](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md) on the **WhateverGreen** repository.

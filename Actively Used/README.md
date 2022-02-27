@@ -2,7 +2,7 @@
 
 ## Current NUC BIOS Revision
 
-FNCML357.0053.2021.0707.1420
+FNCML357.0055.2021.1202.1748
 
 ## Generating Personalised SMBIOS
 
@@ -111,7 +111,7 @@ The above `<data>` value is translated as `0xec060800000000000000000000000000` i
 
 There have also been earlier OpenCore configurations for this NUC that have been using `<data>6wYIAAAAAAAAAAAAAAAAAA==</data>` that translates to `0xeb060800000000000000000000000000` in hexadecimal. This value is referencing `0x0806EB` that seems to belong to the previous CPU family of Whiskey Lake processors with ID **0806EBh** that includes [Intel Core i5-8265U](https://www.cpu-world.com/CPUs/Core_i5/Intel-Core%20i5%20i5-8265U.html) which is also supported by macOS, at this time.
 
-3. The following IGPU embedded graphics IDs are injected:
+3. The following basic IGPU embedded graphics IDs are injected:
 ```
 	<key>AAPL,ig-platform-id</key>
 	<data>BwCbPg==</data>
@@ -121,6 +121,8 @@ There have also been earlier OpenCore configurations for this NUC that have been
 This NUC is embedding the Intel UHD Graphics 630 (Mobile) display controller with PCI ID of [[8086:3e9b]](http://pci-ids.ucw.cz/read/PC/8086/3e9b) that seems to be the one used by `Macmini8,1` natively. However, if no IDs are injected or the wrong ones, **WhateverGreen** may be assigning a different set of IDs (probably due to the CPU platform) which has insofrar led many times to lack of acceleration or computer freezes.
 
 It is thus important to _force_ a `device-id` and an `ig-platform-id` value in OpenCore that reflect this Mac Mini IGPU hardware, thus matching this NUC hardware. This leads to the safe use of `device-id` value `0x3e9b0000` and `AAPL,ig-platform-id` as `0x3e9b0007` (byte-swapped) thanks to Hackintool. See **DeviceProperties** at [Dortania](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/coffee-lake-plus.html#deviceproperties).
+
+Starting from OpenCore 0.7.8 configuration, a more precise port definition was added in order to correctly identify the embedded HDMI port. For more information, consult the configuration [updates](Updates.md) history.
 
 4. The following custom SSDTs are included, defined and enabled:
 
