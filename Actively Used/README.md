@@ -15,7 +15,7 @@ To confirm that the injected value works persistently across reboots, one can ei
 
 ## OpenCore Version Installed
 
-These files have been running without issues on the official OpenCore releases on [GitHub](https://github.com/acidanthera/OpenCorePkg/releases).
+These files have been running without issues with the official OpenCore releases on [GitHub](https://github.com/acidanthera/OpenCorePkg/releases).
 
 The original configuration, especially setting the "Quirks" to the correct values for this _specific_ NUC chipset and platform, was done by following the [Dortania Guide to OpenCore](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html) and has remained pretty much the same with the last OpenCore iterations.
 
@@ -61,10 +61,10 @@ Saves macOS kernel panic output to the OpenCore root (EFI) partition. The file i
 
 The following debug output levels are supported, provided that `Target` enables console (on-screen) printing:
 
-* `0x00000002` (bit 01) — DEBUG_WARN in DEBUG, NOOPT, RELEASE
-* `0x00000040` (bit 06) — DEBUG_INFO in DEBUG, NOOPT
-* `0x00400000` (bit 22) — DEBUG_VERBOSE in custom builds
-* `0x80000000` (bit 31) — DEBUG_ERROR in DEBUG, NOOPT, RELEASE
+* `0x00000002 - DEBUG_WARN in DEBUG, NOOPT, RELEASE`
+* `0x00000040 - DEBUG_INFO in DEBUG, NOOPT`
+* `0x00400000 - DEBUG_VERBOSE` in custom builds
+* `0x80000000 - DEBUG_ERROR in DEBUG, NOOPT, RELEASE`
 
 The most common value found in many configurations is `<integer>2147483648</integer>` that translates to `0x80000000` as well as `<integer>2147483650</integer>` that translates to `0x80000002`.
 
@@ -72,13 +72,13 @@ The most common value found in many configurations is `<integer>2147483648</inte
 
 The following logging targets are supported, besides `0x00` that is the failsafe value:
 
-* `0x01` (bit 0) — Enable logging, otherwise all log is discarded
-* `0x02` (bit 1) — Enable basic console (on-screen) logging
-* `0x04` (bit 2) — Enable logging to Data Hub
-* `0x08` (bit 3) — Enable serial port logging
-* `0x10` (bit 4) — Enable UEFI variable logging
-* `0x20` (bit 5) — Enable non-volatile UEFI variable logging
-* `0x40` (bit 6) — Enable logging to file
+* `0x01` Enable logging, otherwise all log is discarded
+* `0x02` Enable basic console (on-screen) logging
+* `0x04` Enable logging to Data Hub
+* `0x08` Enable serial port logging
+* `0x10` Enable UEFI variable logging
+* `0x20` Enable non-volatile UEFI variable logging
+* `0x40` Enable logging to file
 
 **Misc → Security → AllowNvramReset**
 
@@ -91,6 +91,31 @@ Allows using `CTRL+Enter` and `CTRL+Index` keyboard shortcuts that can change th
 **Misc → Security → AllowToggleSip**
 
 Enables in OpenCore picker the entry for disabling and enabling System Integrity Protection (SIP). **Note:** It is strongly recommended to _not_ make a habit of booting macOS with SIP disabled. The existence of this boot option is to just make it _easier_ to quickly disable SIP protection when genuinely needed, but it should be re-enabled again afterwards.
+
+**Misc → Security → ScanPolicy**
+
+The assigned value allows or prevents OpenCore from scanning and booting from untrusted sources (and partitions). A typical value of `17760515` (integer) or `0x10F0103` (hexadecimal) allows booting from most expected modern sources, whereas a value of `0` (zero) _disables_ this feature and allows booting from **any** source, especially useful for **USB installers.**
+
+* `0x00000001 - OC_SCAN_FILE_SYSTEM_LOCK` restricts scanning to **file systems** defined as a part of this policy
+* `0x00000002 - OC_SCAN_DEVICE_LOCK` restricts scanning to **device types** defined as a part of this policy
+* `0x00000100 - OC_SCAN_ALLOW_FS_APFS` allows scanning of APFS file system
+* `0x00010000 - OC_SCAN_ALLOW_DEVICE_SATA` allow scanning SATA devices
+* `0x00020000 - OC_SCAN_ALLOW_DEVICE_SASEX` allow scanning SAS and Mac NVMe devices
+* `0x00040000 - OC_SCAN_ALLOW_DEVICE_SCSI` allow scanning SCSI devices
+* `0x00080000 - OC_SCAN_ALLOW_DEVICE_NVME` allow scanning NVMe devices
+* `0x01000000 - OC_SCAN_ALLOW_DEVICE_PCI` allow scanning devices directly connected to PCI bus
+
+**Misc → Security → SecureBootModel**
+
+Sets Apple Secure Boot hardware model and policy. Specifying this value defines which operating systems will be bootable. Operating systems shipped before the specified model was released, will not boot. A value `Default` will match the model from the SMBIOS defined in the configuration; a value `Disabled` will match no model and Secure Boot will be disabled.
+
+**UEFI → APFS → MinDate**
+
+The APFS driver _date_ connects the APFS driver with the respective _calendar_ release date of macOS. This option allows restricting APFS drivers to modern macOS versions. A default date value of `0` (zero) corresponds to 2021/01/01 and can be used for macOS Big Sur and newer; a value of `-1` permits any macOS release to load, as it actually _disables_ this feature.
+
+**UEFI → APFS → MinVersion**
+
+The APFS driver _version_ connects the APFS driver with the respective macOS _release_. This option allows restricting APFS drivers to modern macOS versions. A default version value of `0` (zero) can be used for macOS Big Sur and newer; a value of `-1` permits any macOS version to load, as it actually _disables_ this feature.
 
 ## OpenCore Main Parameters
 
@@ -137,7 +162,7 @@ Starting from OpenCore 0.7.8 configuration, a more precise port definition was a
 * SSDT-SBUS.aml
 * SSDT-TITAN.aml
 
-The ACPI code and justification for each custom DSDT is described in the active [SSDTs](../SSDTs) section.
+The ACPI code and justification for each custom SSDT is described in more detail in the [SSDTs](../SSDTs) section.
 
 6. The following kexts are included, defined and required:
 
