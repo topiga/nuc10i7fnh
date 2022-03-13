@@ -2,6 +2,16 @@
 
 The following changes (either additions or removals) are present in each configuration file per their respective OpenCore release:
 
+## OpenCore v0.7.9 Update
+
+* Kernel → Add → added new key: `Strategy` default value to "Disable" as string
+* Misc → Debug → added new key: `LogModules` default value to "*" as string
+
+**Personal changes:**
+
+* DeviceProperties → `PciRoot(0x0)/Pci(0x1d,0x5)/Pci(0x0,0x0)` → added SD Host model string for visual reference only
+* Kernel → Add → replaced `IntelBluetoothInjector.kext` with `BlueToolFixup.kext` for macOS Monterey compatibility
+
 ## OpenCore v0.7.8 Update
 
 A direct jump to this version, where some personal tweaks were added besides changes in OpenCore configuration keys:

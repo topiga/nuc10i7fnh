@@ -147,7 +147,7 @@ This NUC is embedding the Intel UHD Graphics 630 (Mobile) display controller wit
 
 It is thus important to _force_ a `device-id` and an `ig-platform-id` value in OpenCore that reflect this Mac Mini IGPU hardware, thus matching this NUC hardware. This leads to the safe use of `device-id` value `0x3e9b0000` and `AAPL,ig-platform-id` as `0x3e9b0007` (byte-swapped) thanks to Hackintool. See **DeviceProperties** at [Dortania](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/coffee-lake-plus.html#deviceproperties).
 
-Starting from OpenCore 0.7.8 configuration, a more precise port definition was added in order to correctly identify the embedded HDMI port. For more information, consult the configuration [updates](Updates.md) history.
+:warning: Starting from OpenCore 0.7.8 configuration, a more precise port definition was added in order to correctly identify the embedded HDMI port. For more information, consult the configuration [updates](Updates.md) history.
 
 4. The following custom SSDTs are included, defined and enabled:
 
@@ -169,7 +169,8 @@ The ACPI code and justification for each custom SSDT is described in more detail
 * [AirportItlwm.kext](https://github.com/OpenIntelWireless/itlwm/releases)
 * [AppleALC.kext](https://github.com/acidanthera/AppleALC/releases)
 * [IntelBluetoothFirmware.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases)
-* [IntelBluetoothInjector.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases)
+* [IntelBluetoothInjector.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases) → disabled
+* [BlueToolFixup.kext](https://github.com/acidanthera/BrcmPatchRAM/releases) :warning:
 * [IntelMausi.kext](https://github.com/acidanthera/IntelMausi/releases)
 * [Lilu.kext](https://github.com/acidanthera/Lilu/releases)
 * [NVMeFix.kext](https://github.com/acidanthera/NVMeFix/releases) → disabled
@@ -178,6 +179,8 @@ The ACPI code and justification for each custom SSDT is described in more detail
 * [VirtualSMC.kext](https://github.com/acidanthera/VirtualSMC/releases)
 * [WhateverGreen.kext](https://github.com/acidanthera/WhateverGreen/releases)
 * USBPorts.kext
+
+:warning: Starting from OpenCore 0.7.9 configuration, this NUC will be running **macOS Monterey* and a major change in the loaded kexts has taken place, namely the replacement of `IntelBluetoothInjector.kext` with `BlueToolFixup.kext` so please be aware.
 
 **Note:** It has not been validated if the use of **NVMeFix.kext** improves overall sleep or power consumption, therefore this kext is at this moment just disabled and won't get loaded.
 
