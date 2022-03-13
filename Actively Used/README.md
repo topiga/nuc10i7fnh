@@ -164,7 +164,7 @@ It is thus important to _force_ a `device-id` and an `ig-platform-id` value in O
 
 The ACPI code and justification for each custom SSDT is described in more detail in the [SSDTs](../SSDTs) section.
 
-6. The following kexts are included, defined and required:
+5. The following kexts are included, defined and required:
 
 * [AirportItlwm.kext](https://github.com/OpenIntelWireless/itlwm/releases)
 * [AppleALC.kext](https://github.com/acidanthera/AppleALC/releases)
@@ -180,7 +180,7 @@ The ACPI code and justification for each custom SSDT is described in more detail
 * [WhateverGreen.kext](https://github.com/acidanthera/WhateverGreen/releases)
 * USBPorts.kext
 
-:warning: Starting from OpenCore 0.7.9 configuration, this NUC will be running **macOS Monterey* and a major change in the loaded kexts has taken place, namely the replacement of `IntelBluetoothInjector.kext` with `BlueToolFixup.kext` so please be aware.
+:warning: Starting from OpenCore 0.7.9 configuration, this NUC will be running **macOS Monterey** and a major change in the loaded kexts has taken place, namely the replacement of `IntelBluetoothInjector.kext` with `BlueToolFixup.kext` so please be aware.
 
 **Note:** It has not been validated if the use of **NVMeFix.kext** improves overall sleep or power consumption, therefore this kext is at this moment just disabled and won't get loaded.
 
