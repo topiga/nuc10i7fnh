@@ -170,9 +170,11 @@ With the injection of `SSDT-PLUG.aml` via OpenCore, we can verify that Power Man
 
 ![PowerGadget](Various/PowerGadget.png)
 
-## Changes Brought About by macOS 11
+## Changes Brought About by macOS 11 and later
 
 An analysis of all the novelties that *Big Sur* brings are detailed over at [Dortania](https://dortania.github.io/hackintosh/updates/2020/11/12/bigsur-new.html).
+
+![Monterey](Various/Monterey.png)
 
 ![BigSur](Various/BigSur.png)
 

@@ -23,7 +23,7 @@
 
 DefinitionBlock ("SSDT-HPTE.aml", "SSDT", 2, "OC", "HPTE", 0x00000000)
 {
-    External (HPTE, FieldUnitObj)
+    External (HPTE, IntObj)
 
     Scope (\_SB)
     {

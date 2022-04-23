@@ -2,6 +2,17 @@
 
 The following changes (either additions or removals) are present in each configuration file per their respective OpenCore release:
 
+## OpenCore v0.8.0 Update
+
+* Kernel → Quirks → added new key: `CustomPciSerialDevice` as "false" boolean
+* Kernel → Quirks → added new key: `ForceAquantiaEthernet` as "false" boolean
+* Misc → Debug → removed obsolete key: `SerialInit`
+* Misc → Serial → added new structure with keys `Init` and `Override` as "false" boolean
+
+**Personal changes:**
+
+* Disabled loading `SSDT-XOSI.aml` as well as patch to `Rename _OSI to XOSI (ACPI)` since there seems no real use for it.
+
 ## OpenCore v0.7.9 Update
 
 * Kernel → Add → added new key: `Strategy` default value to "Disable" as string

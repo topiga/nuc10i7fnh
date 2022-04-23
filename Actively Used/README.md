@@ -161,6 +161,7 @@ It is thus important to _force_ a `device-id` and an `ig-platform-id` value in O
 * SSDT-PMCR.aml
 * SSDT-SBUS.aml
 * SSDT-TITAN.aml
+* SSDT-XOSI.aml → disabled
 
 The ACPI code and justification for each custom SSDT is described in more detail in the [SSDTs](../SSDTs) section.
 
