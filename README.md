@@ -110,9 +110,9 @@ For the complete list of all detected PCI hardware components and their respecti
 
 ## Unsupported CFG Lock in BIOS :warning:
 
-Intel has **never** provided an option in its BIOS releases to allow setting the CPU value regarding CFG Lock i.e. the MSR `0xE2` register to be unlocked; the only method that worked, was to use EFI tools such as `ControlMsrE2.efi` and `CFGLock.efi` via the UEFI Shell in OpenCore, with **only** the latter being successful.
+Intel has **never** provided an option in its BIOS releases to allow setting the CPU value regarding CFG Lock i.e. the MSR `0xE2` register to be unlocked; the only method that originally worked, was to use special EFI tools such as `ControlMsrE2.efi` and `CFGLock.efi` via the UEFI Shell in OpenCore, with **only** the latter being successful.
 
-However, since BIOS revision FN0056, it seems that Intel **locked** NVRAM access to the respective MSR `0xE2` region; as a result, the tool `CFGLock.efi` **can no longer change the CFG Lock setting.**
+However, since BIOS revision FN0056, it seems that Intel has **locked** NVRAM access to the respective MSR `0xE2` region; as a result, the tool `CFGLock.efi` **can no longer change the CFG Lock setting.**
 
 To continue using macOS without issues, this new restriction now requires a specific "quirk" in OpenCore _Kernel_ configuration to be set for the current hardware platform, so that kernel panics are avoided at all times: `AppleXcpmCfgLock` must be set to `true`.
 
