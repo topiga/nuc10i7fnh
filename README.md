@@ -69,7 +69,7 @@ BIOS Revision: MM81.88Z.F000.B00.2111162120<br/>
 **BTLE:** Intel Bluetooth 5.1 (Embedded Module) [8087:0026]<br/>
 **NVMe:** PNY XLR8 NVMe M.2 500GB (Model CS3030) [[1987:5012]](https://pci-ids.ucw.cz/read/PC/1987/5012)<br/>
 **Previous NVMe:** Samsung EVO 970 NVMe M.2 1TB (Model MZ-V7E1T0BW) [[144d:a808]](https://pci-ids.ucw.cz/read/PC/144d/a808)<br/>
-**SSD:** N/A<br/>
+**SSD:** SanDisk Ultra 3D SSD 2TB (Model SDSSDH3-2T00-G25)
 **Thunderbolt:** Intel JHL7540 Thunderbolt 3 Bridge (Titan Ridge 2C 2018) [[8086:15e7]](https://pci-ids.ucw.cz/read/PC/8086/15e7)<br/>
 **Intel Product Compatibility Tool:** see [Intel website](https://compatibleproducts.intel.com/ProductDetails?EPMID=188811)<br/>
 
@@ -88,7 +88,7 @@ Alternatively, if `ShowPicker` is disabled or `Timeout` set to 0, keep pressing 
 
 ## Active Configuration
 
-* Faking CPU ID is **absolutely** required, power management is native; MSR `0xE2` can be unlocked; :warning:
+* Faking CPU ID is **absolutely** required, power management is native; MSR `0xE2` cannot be unlocked; :warning:
 * External USB 3.1 ports work as expected; using generated `USBPorts.kext`;
 * Internal USB 2.0 headers not used; they are disabled in BIOS;
 * External USB-C ports **not** tested yet;
@@ -107,6 +107,19 @@ Alternatively, if `ShowPicker` is disabled or `Timeout` set to 0, keep pressing 
 For the complete list of all detected PCI hardware components and their respective addresses via `lspci -nn` command (in Ubuntu, loaded via USB) see [here](Various/lspci-nn.txt). This list was created with all devices enabled in BIOS and is used as a device "map" so that PCI IDs can be detected before tweaking the hardware (and BIOS) to run macOS.
 
 ![Peripherals](Various/Peripherals.png)
+
+## Unsupported CFG Lock in BIOS :warning:
+
+Intel has **never** provided an option in its BIOS releases to allow setting the CPU value regarding CFG Lock i.e. the MSR `0xE2` register to be unlocked; the only method that worked, was to start using EFI tools such as `ControlMsrE2.efi` and `CFGLock.efi` via the UEFI Shell in OpenCore, with **only** the latter being successful.
+
+However, since BIOS revision FN0056, it seems that Intel **locked** NVRAM access to the respective MSR `0xE2` region; as a result, the tool `CFGLock.efi` **can no longer change the CFG Lock setting**, unfortunately.
+
+To continue using macOS without issues, this restriction now requires a specific "quirk" in OpenCore _Kernel_ configuration to be set for the current hardware platform, so that kernel panics are avoided at all times: `AppleXcpmCfgLock` must be set to `true`.
+
+As a reminder, according to the OpenCore Configuration manual and a [further clarification](https://github.com/acidanthera/bugtracker/issues/1751#issuecomment-900576662) in a support thread:
+
+* `AppleCpuPmCfgLock` relates only to `AppleIntelCPUPowerManagement.kext` which is no longer used on El Capitan 10.11 or newer systems, for Haswell or newer platforms;
+* `AppleXcpmCfgLock` requires Haswell or newer platforms and affects any supported macOS (but is _not_ used on any macOS using IvyBridge or older).
 
 ## Intel UHD Graphics 630 Properties
 
@@ -170,11 +183,19 @@ With the injection of `SSDT-PLUG.aml` via OpenCore, we can verify that Power Man
 
 ![PowerGadget](Various/PowerGadget.png)
 
-## Changes Brought About by macOS 11 and later
+## Changes Brought About by macOS 12
 
-An analysis of all the novelties that *Big Sur* brings are detailed over at [Dortania](https://dortania.github.io/hackintosh/updates/2020/11/12/bigsur-new.html).
+MacOS 12.x _Monterey_ has brought an important change in OpenCore configuration for BTLE, namely the required removal of **IntelBluetoothInjector.kext** and its replacement by **BlueToolFixup.kext** found inside [BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM) package. The main **IntelBluetoothFirmware.kext** remains active and must still be loaded, as done previously.
+
+:warning: From version 2.2.0 of [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases) onwards, there is a new kext **IntelBTPatcher.kext** included that the developers recommend loading as it fixes a bug in Apple's _Monterey_ re-written Bluetooth stack. For more details read [here](https://openintelwireless.github.io/IntelBluetoothFirmware/FAQ.html#what-is-intelbtpatcher-trying-to-fix).
+
+There is also a distinct version of [AirportItlwm.kext](https://github.com/OpenIntelWireless/itlwm/releases) compiled for _Monterey_ only that has to be installed, replacing the Big Sur version of the kext _without_ any OpenCore configuration changes, however.
 
 ![Monterey](Various/Monterey.png)
+
+## Changes Brought About by macOS 11
+
+An analysis of all the novelties that _Big Sur_ brings are detailed over at [Dortania](https://dortania.github.io/hackintosh/updates/2020/11/12/bigsur-new.html).
 
 ![BigSur](Various/BigSur.png)
 

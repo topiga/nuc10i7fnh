@@ -2,6 +2,30 @@
 
 The following changes (either additions or removals) are present in each configuration file per their respective OpenCore release:
 
+## OpenCore v0.8.4 Update
+
+* Misc → Tools → added new required key `FullNvramAccess` in all entries as "false" boolean
+* NVRAM → added new required key: `LegacyEnable` as "false" boolean
+* UEFI → Drivers → added new required key `LoadEarly` in all entries as "false" boolean
+
+**Personal changes:**
+
+* Kernel → Add → added and enabled new required kernel extension `IntelBTPatcher.kext`
+* NVRAM → removed entries under `LegacySchema` as they are not referenced anywhere
+
+## OpenCore v0.8.1 Update
+
+* Misc → Security → removed obsolete key `AllowNvramReset`
+* Misc → Security → removed obsolete key `AllowToggleSip`
+* UEFI → Drivers → added new driver entry for `ResetNvramEntry.efi` as "Enabled" string
+* UEFI → Drivers → added new driver entry for `ToggleSipEntry.efi` as "Enabled" string
+
+**Personal changes:**
+
+* DeviceProperties → Add → `PciRoot(0x0)/Pci(0x17,0x0)` → added SATA compatible device `pci8086,a352` as string
+* Kernel → Quirks → changed key `AppleXcpmCfgLock` value to "true" boolean
+* Kernel → Quirks → changed key `ExtendBTFeatureFlags` value to "true" boolean
+
 ## OpenCore v0.8.0 Update
 
 * Kernel → Quirks → added new key: `CustomPciSerialDevice` as "false" boolean
@@ -20,7 +44,7 @@ The following changes (either additions or removals) are present in each configu
 
 **Personal changes:**
 
-* DeviceProperties → `PciRoot(0x0)/Pci(0x1d,0x5)/Pci(0x0,0x0)` → added SD Host model string for visual reference only
+* DeviceProperties → Add → `PciRoot(0x0)/Pci(0x1d,0x5)/Pci(0x0,0x0)` → added SD Host model string for visual reference only
 * Kernel → Add → replaced `IntelBluetoothInjector.kext` with `BlueToolFixup.kext` for macOS Monterey compatibility
 
 ## OpenCore v0.7.8 Update
