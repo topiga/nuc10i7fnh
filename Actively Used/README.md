@@ -170,9 +170,9 @@ The ACPI code and justification for each custom SSDT is described in more detail
 * [AirportItlwm.kext](https://github.com/OpenIntelWireless/itlwm/releases)
 * [AppleALC.kext](https://github.com/acidanthera/AppleALC/releases)
 * [IntelBluetoothFirmware.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases)
-* [IntelBluetoothInjector.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases) → removed
-* [IntelBTPatcher.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases) :warning:
-* [BlueToolFixup.kext](https://github.com/acidanthera/BrcmPatchRAM/releases) :warning:
+* [IntelBluetoothInjector.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases) → removed :warning:
+* [IntelBTPatcher.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases)
+* [BlueToolFixup.kext](https://github.com/acidanthera/BrcmPatchRAM/releases)
 * [IntelMausi.kext](https://github.com/acidanthera/IntelMausi/releases)
 * [Lilu.kext](https://github.com/acidanthera/Lilu/releases)
 * [NVMeFix.kext](https://github.com/acidanthera/NVMeFix/releases) → disabled

@@ -69,7 +69,7 @@ BIOS Revision: MM81.88Z.F000.B00.2111162120<br/>
 **BTLE:** Intel Bluetooth 5.1 (Embedded Module) [8087:0026]<br/>
 **NVMe:** PNY XLR8 NVMe M.2 500GB (Model CS3030) [[1987:5012]](https://pci-ids.ucw.cz/read/PC/1987/5012)<br/>
 **Previous NVMe:** Samsung EVO 970 NVMe M.2 1TB (Model MZ-V7E1T0BW) [[144d:a808]](https://pci-ids.ucw.cz/read/PC/144d/a808)<br/>
-**SSD:** SanDisk Ultra 3D SSD 2TB (Model SDSSDH3-2T00-G25)
+**SSD:** SanDisk Ultra 3D SSD 2TB (Model SDSSDH3-2T00-G25)<br/>
 **Thunderbolt:** Intel JHL7540 Thunderbolt 3 Bridge (Titan Ridge 2C 2018) [[8086:15e7]](https://pci-ids.ucw.cz/read/PC/8086/15e7)<br/>
 **Intel Product Compatibility Tool:** see [Intel website](https://compatibleproducts.intel.com/ProductDetails?EPMID=188811)<br/>
 
@@ -88,7 +88,7 @@ Alternatively, if `ShowPicker` is disabled or `Timeout` set to 0, keep pressing 
 
 ## Active Configuration
 
-* Faking CPU ID is **absolutely** required, power management is native; MSR `0xE2` cannot be unlocked; :warning:
+* Faking CPU ID is **absolutely** required, power management is native; MSR `0xE2` **cannot** be unlocked; :warning:
 * External USB 3.1 ports work as expected; using generated `USBPorts.kext`;
 * Internal USB 2.0 headers not used; they are disabled in BIOS;
 * External USB-C ports **not** tested yet;
@@ -110,11 +110,11 @@ For the complete list of all detected PCI hardware components and their respecti
 
 ## Unsupported CFG Lock in BIOS :warning:
 
-Intel has **never** provided an option in its BIOS releases to allow setting the CPU value regarding CFG Lock i.e. the MSR `0xE2` register to be unlocked; the only method that worked, was to start using EFI tools such as `ControlMsrE2.efi` and `CFGLock.efi` via the UEFI Shell in OpenCore, with **only** the latter being successful.
+Intel has **never** provided an option in its BIOS releases to allow setting the CPU value regarding CFG Lock i.e. the MSR `0xE2` register to be unlocked; the only method that worked, was to use EFI tools such as `ControlMsrE2.efi` and `CFGLock.efi` via the UEFI Shell in OpenCore, with **only** the latter being successful.
 
-However, since BIOS revision FN0056, it seems that Intel **locked** NVRAM access to the respective MSR `0xE2` region; as a result, the tool `CFGLock.efi` **can no longer change the CFG Lock setting**, unfortunately.
+However, since BIOS revision FN0056, it seems that Intel **locked** NVRAM access to the respective MSR `0xE2` region; as a result, the tool `CFGLock.efi` **can no longer change the CFG Lock setting.**
 
-To continue using macOS without issues, this restriction now requires a specific "quirk" in OpenCore _Kernel_ configuration to be set for the current hardware platform, so that kernel panics are avoided at all times: `AppleXcpmCfgLock` must be set to `true`.
+To continue using macOS without issues, this new restriction now requires a specific "quirk" in OpenCore _Kernel_ configuration to be set for the current hardware platform, so that kernel panics are avoided at all times: `AppleXcpmCfgLock` must be set to `true`.
 
 As a reminder, according to the OpenCore Configuration manual and a [further clarification](https://github.com/acidanthera/bugtracker/issues/1751#issuecomment-900576662) in a support thread:
 
