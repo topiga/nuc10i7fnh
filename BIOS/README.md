@@ -5,7 +5,6 @@ There are some basic requirements regarding the BIOS settings of this NUC in ord
 ## Necessary :warning: and Advised Changes :white_check_mark:
 
 **1. ADVANCED Section**
-* In "Onboard Devices" panel → Set "SD Card 3.0 Controller" to **Disabled**  :warning:
 * In "Onboard Devices" panel → Set "Enhanced Consumer IR" to **Disabled**  :white_check_mark:
 * In "Onboard Devices" panel → Confirm that "HDMI CEC Control" is **Disabled**  :white_check_mark:
 * In "USB Ports" panel → Set both "USB Header Connector" ports to **Disabled**  :white_check_mark:
@@ -21,6 +20,7 @@ There are some basic requirements regarding the BIOS settings of this NUC in ord
 **3. POWER Section**
 * In "Secondary Power Settings" panel → Confirm that "Sleep Type Support" is set as **"Modern Standby"**  :warning:
 * In "Secondary Power Settings" panel → Set "Wake on LAN from S4/S5" to **"Stay Off"**  :warning:
+* In "Secondary Power Settings" panel → Set "Deep S4/S5" to **Enabled**  :warning:
 * In "Secondary Power Settings" panel → Confirm that "PCIe ASPM Support" is **Enabled**  :white_check_mark:
 
 **4. BOOT Section**
@@ -36,3 +36,5 @@ There are some basic requirements regarding the BIOS settings of this NUC in ord
 **Press F10 to save and exit.**
 
 **Note:** [ASPM](https://en.wikipedia.org/wiki/Active_State_Power_Management) is a PCI Express enhancement; it allows for a device to go completely into an electrically "idle" state i.e. it will not send or receive electrical signals when entering this state. PCIe cards should always support ASPM and this should normally be handled by BIOS as the OS may _not_ always play an important part.
+
+**Note:** Recent updates in macOS Monterey exhibit _native_ support for the integrated "SD Card 3.0 Controller", so there is no need to disable it anymore (ADVANCED Section → "Onboard Devices" panel).

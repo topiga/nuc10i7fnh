@@ -373,8 +373,6 @@
 				<data>AAgAAA==</data>
 				<key>framebuffer-con0-busid</key>
 				<data>AQAAAA==</data>
-				<key>framebuffer-portcount</key>
-				<data>AgAAAA==</data>
 				<key>hda-gfx</key>
 				<string>onboard-1</string>
 				<key>model</key>
