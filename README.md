@@ -147,6 +147,8 @@ The `AAPL,ig-platform-id` property set to `0x3E9B0007` is used for **WhateverGre
 
 Read more at [Intel® HD Graphics FAQs](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md) on the **WhateverGreen** repository.
 
+![DualMonitors](Various/DualMonitors.png)
+
 ## USB Port Mapping on NUC Chassis
 
 | USB 2.0 Port Name | USB 3.0 Port Name | Hardware Location    | Controller     |
