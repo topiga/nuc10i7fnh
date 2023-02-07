@@ -63,8 +63,8 @@ BIOS Revision: MM81.88Z.F000.B00.2111162120<br/>
 
 ## Current Setup
 
-**Memory:** 16GB in 2 x 8GB SO-DIMM (1.2V)<br/>
-**RAM:** Kingston HyperX "Impact" DDR4 @ 2666MHz CL15 (Model HX426S15IB2K2/16)<br/>
+**Memory:** 32GB in 2 x 16GB SO-DIMM (1.2V)<br/>
+**RAM:** Kingston Fury "Impact" DDR4 @ 2666MHz CL15 (Model KF426S15IB1K2/32)<br/>
 **WLAN:** Intel Dual-Band Wi-Fi 6 AX201 (Embedded Module) [[8086:02f0]](http://pci-ids.ucw.cz/read/PC/8086/02f0) (Subsystem ID 0x0074)<br/>
 **BTLE:** Intel Bluetooth 5.1 (Embedded Module) [8087:0026]<br/>
 **NVMe:** PNY XLR8 NVMe M.2 500GB (Model CS3030) [[1987:5012]](https://pci-ids.ucw.cz/read/PC/1987/5012)<br/>
@@ -72,6 +72,8 @@ BIOS Revision: MM81.88Z.F000.B00.2111162120<br/>
 **SSD:** SanDisk Ultra 3D SSD 2TB (Model SDSSDH3-2T00-G25)<br/>
 **Thunderbolt:** Intel JHL7540 Thunderbolt 3 Bridge (Titan Ridge 2C 2018) [[8086:15e7]](https://pci-ids.ucw.cz/read/PC/8086/15e7)<br/>
 **Intel Product Compatibility Tool:** see [Intel website](https://compatibleproducts.intel.com/ProductDetails?EPMID=188811)<br/>
+
+**N.B.** The original RAM modules installed were Kingston HyperX "Impact" DDR4 @ 2666MHz CL15 (Model HX426S15IB2K2/16)
 
 ## Required BIOS Settings
 
