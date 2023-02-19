@@ -2,7 +2,7 @@
 
 ## Current NUC BIOS Revision
 
-FNCML357.0058.2022.0720.1011
+FNCML357.0059.2022.1019.1055
 
 ## Generating Personalised SMBIOS
 
@@ -205,3 +205,13 @@ These `pmset` parameters above achieve the following:
 * Disable `Standby` → minimises the time period between sleep and going into hibernation;
 * Disable `Proximity Wake` → does not allow waking from an iPhone or an Apple Watch when they come near;
 * Disable `TCP Keep Alive` → prevents the mechanism that wakes the computer up every 2 hours.
+
+## Volume Hash Mismatch Error
+
+This new error started to recently appear after the update to Montery OS and OpenCore 0.8.x series.
+
+On real Macs it seems that this "hash" error would show up if _something_ corrupted the so-called "Sealed System Volume" which is a technology used in Big Sur and newer; it ensures no OS modifications are being done in the system volume but _only_ in the data volume.
+
+However, as this is not the case on this NUC, per numerous reports found on-line, many people have linked the appearance of this error with the use of the Bluetooth module or some weird combination of a specific range of NVMe controllers.
+
+Insofar, no definitive solution has been proposed or validated.

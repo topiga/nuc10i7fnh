@@ -2,6 +2,35 @@
 
 The following changes (either additions or removals) are present in each configuration file per their respective OpenCore release:
 
+## OpenCore v0.8.9 Update
+
+* UEFI → Quirks → added new required key: `ResizeUsePciRbIo` as "false" boolean
+
+**Personal changes:**
+
+* NVRAM → Add → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → removed string `darkwake=0` from `boot-args` parameters
+
+## OpenCore v0.8.8 Update
+
+* Misc → Boot → added new required key `HibernateSkipsPicker` as "false" boolean
+
+## OpenCore v0.8.6 Update
+
+* UEFI → AppleInput → added new required key: `PointerDwellClickTimeout` default value to "0" integer
+* UEFI → AppleInput → added new required key: `PointerDwellDoubleClickTimeout` default value to "0" integer
+* UEFI → AppleInput → added new required key: `PointerDwellRadius` default value to "0" integer
+
+## OpenCore v0.8.5 Update
+
+* Kernel → Quirks → changed key `ExtendBTFeatureFlags` value to "false" boolean as it is not applicable to Monterey OS
+* NVRAM → Add → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → removed key `ForceDisplayRotationInEFI` per OC sample
+* NVRAM → Delete → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → removed string `ForceDisplayRotationInEFI` per OC sample
+
+**Personal changes:**
+
+* DeviceProperties → Add → `PciRoot(0x0)/Pci(0x1f,0x3)` → added audio `device-id` with value `0HoAAA==`
+* DeviceProperties → Add → `PciRoot(0x0)/Pci(0x1f,0x3)` → changed audio `layout-id` value to "24" integer
+
 ## OpenCore v0.8.4 Update
 
 * Misc → Tools → added new required key `FullNvramAccess` in all entries as "false" boolean

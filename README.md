@@ -73,7 +73,7 @@ BIOS Revision: MM81.88Z.F000.B00.2111162120<br/>
 **Thunderbolt:** Intel JHL7540 Thunderbolt 3 Bridge (Titan Ridge 2C 2018) [[8086:15e7]](https://pci-ids.ucw.cz/read/PC/8086/15e7)<br/>
 **Intel Product Compatibility Tool:** see [Intel website](https://compatibleproducts.intel.com/ProductDetails?EPMID=188811)<br/>
 
-**N.B.** The original RAM modules installed were Kingston HyperX "Impact" DDR4 @ 2666MHz CL15 (Model HX426S15IB2K2/16)
+**N.B.** The original RAM installed were 2 x 8GB Kingston HyperX "Impact" modules (Model HX426S15IB2K2/16)
 
 ## Required BIOS Settings
 
